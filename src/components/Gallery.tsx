@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { BotanicalMotif } from './BotanicalMotif';
 
@@ -34,7 +34,73 @@ const galleryImages = [
     className: 'col-span-1 md:col-span-1 row-span-1 aspect-square',
     type: 'video',
   },
-];
+] as const;
+
+function AutoVideo({
+  src,
+  className = '',
+}: {
+  src: string;
+  className?: string;
+}) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.loop = true;
+
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+      } catch (error) {
+        console.warn('Autoplay bloqueado no mobile:', error);
+      }
+    };
+
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('canplay', tryPlay);
+      video.addEventListener('loadeddata', tryPlay);
+
+      return () => {
+        video.removeEventListener('canplay', tryPlay);
+        video.removeEventListener('loadeddata', tryPlay);
+      };
+    }
+  }, [src]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      autoPlay
+      muted
+      defaultMuted
+      loop
+      playsInline
+      preload="auto"
+      controls={false}
+      disablePictureInPicture
+      controlsList="nodownload nofullscreen noremoteplayback"
+      className={className}
+    >
+      <source src={src} type="video/mp4" />
+      Seu navegador não suporta vídeo.
+    </video>
+  );
+}
 
 export function Gallery() {
   return (
@@ -42,20 +108,17 @@ export function Gallery() {
       id="gallery"
       className="relative py-32 md:py-40 bg-[#fbf7f2] overflow-hidden"
     >
-      {/* fundo sofisticado */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-gold/8 blur-3xl" />
         <div className="absolute bottom-[-80px] right-[-60px] w-[300px] h-[220px] rounded-full bg-sage/8 blur-3xl" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.45),transparent_28%,rgba(0,0,0,0.015)_100%)]" />
       </div>
 
-      {/* marca d’água */}
       <div className="absolute top-1/2 right-[-120px] -translate-y-1/2 opacity-[0.05] pointer-events-none hidden lg:block">
         <BotanicalMotif size={420} color="#B89B72" />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12">
-        {/* topo */}
         <motion.div
           initial={{ opacity: 0, y: 34 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +152,6 @@ export function Gallery() {
           </div>
         </motion.div>
 
-        {/* galeria */}
         <div className="relative">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-fr">
             {galleryImages.map((item, index) => (
@@ -106,22 +168,15 @@ export function Gallery() {
                 className={item.className}
               >
                 <div className="group relative h-full">
-                  {/* moldura deslocada */}
                   <div className="absolute inset-0 rounded-[1.6rem] border border-gold/20 translate-x-3 translate-y-3 md:translate-x-4 md:translate-y-4" />
 
-                  {/* card */}
                   <div className="relative h-full overflow-hidden rounded-[1.6rem] border border-[#d9c6a8]/25 bg-white shadow-[0_18px_50px_rgba(0,0,0,0.06)]">
                     <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/20 to-transparent pointer-events-none z-10" />
 
                     <div className="relative w-full h-full bg-[#eef1ec] overflow-hidden">
                       {item.type === 'video' ? (
-                        <video
+                        <AutoVideo
                           src={item.src}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="metadata"
                           className="w-full h-full object-cover transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04] group-hover:brightness-[1.03]"
                         />
                       ) : (
@@ -133,11 +188,9 @@ export function Gallery() {
                         />
                       )}
 
-                      {/* overlay refinado */}
                       <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(14,14,14,0.16),transparent_35%,rgba(255,255,255,0.05))]" />
                       <div className="absolute inset-0 bg-sage/5 mix-blend-multiply opacity-80" />
 
-                      {/* label */}
                       <div className="absolute left-4 right-4 bottom-4 md:left-5 md:right-5 md:bottom-5 z-20">
                         <div className="rounded-full border border-white/35 bg-white/18 backdrop-blur-xl px-4 py-2 shadow-[0_10px_25px_rgba(0,0,0,0.08)] w-fit max-w-full">
                           <span className="text-[10px] md:text-xs uppercase tracking-[0.22em] text-white/95">
@@ -153,7 +206,6 @@ export function Gallery() {
           </div>
         </div>
 
-        {/* detalhe inferior */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}

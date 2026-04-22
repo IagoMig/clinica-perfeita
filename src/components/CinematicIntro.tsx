@@ -1,6 +1,72 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { BotanicalMotif } from './BotanicalMotif';
+
+function AutoVideo({
+  src,
+  className = '',
+}: {
+  src: string;
+  className?: string;
+}) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.autoplay = true;
+    video.loop = true;
+
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+      } catch (error) {
+        console.warn('Autoplay bloqueado no mobile:', error);
+      }
+    };
+
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('canplay', tryPlay);
+      video.addEventListener('loadeddata', tryPlay);
+
+      return () => {
+        video.removeEventListener('canplay', tryPlay);
+        video.removeEventListener('loadeddata', tryPlay);
+      };
+    }
+  }, [src]);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      autoPlay
+      muted
+      defaultMuted
+      loop
+      playsInline
+      preload="auto"
+      controls={false}
+      disablePictureInPicture
+      controlsList="nodownload nofullscreen noremoteplayback"
+      className={className}
+    >
+      <source src={src} type="video/mp4" />
+      Seu navegador não suporta vídeo.
+    </video>
+  );
+}
 
 export function CinematicIntro() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -102,7 +168,6 @@ export function CinematicIntro() {
 
   return (
     <>
-      {/* ========================= DESKTOP / TABLET ========================= */}
       <section
         ref={sectionRef}
         className="relative hidden md:block h-[210vh] bg-[#f8f5f1]"
@@ -110,7 +175,6 @@ export function CinematicIntro() {
         <div className="sticky top-0 h-screen overflow-hidden">
           <div className="absolute inset-0 bg-[#f8f5f1]" />
 
-          {/* FUNDO */}
           <motion.div
             style={{ scale: heroBgScale, opacity: heroBgOpacity }}
             className="absolute inset-0 pointer-events-none"
@@ -120,7 +184,6 @@ export function CinematicIntro() {
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.95),rgba(248,245,241,0.92)_44%,rgba(0,0,0,0.015)_100%)]" />
           </motion.div>
 
-          {/* HERO */}
           <motion.div
             style={{
               opacity: heroOpacity,
@@ -133,7 +196,6 @@ export function CinematicIntro() {
             <div className="container mx-auto px-8 lg:px-12 pt-24 pb-16">
               <div className="max-w-6xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-                  {/* TEXTO */}
                   <div className="lg:col-span-6 flex flex-col items-start text-left">
                     <div className="mb-6">
                       <div className="inline-flex items-center gap-3 rounded-full border border-gold/15 bg-white/80 px-4 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
@@ -181,23 +243,16 @@ export function CinematicIntro() {
                     </div>
                   </div>
 
-                  {/* IMAGEM */}
                   <div className="lg:col-span-6 relative w-full">
                     <div className="relative max-w-[520px] ml-auto">
                       <div className="absolute inset-0 rounded-[2.2rem] border border-gold/20 translate-x-4 translate-y-4" />
                       <div className="absolute inset-0 rounded-[2.2rem] bg-gold/6 blur-2xl scale-[0.98]" />
 
                       <div className="relative aspect-[4/5] rounded-[2.2rem] overflow-hidden border border-dark/5 bg-white/85 shadow-[0_28px_75px_rgba(0,0,0,0.08)]">
-                        <video
-                        src="/1.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                        >
-                        Seu navegador não suporta vídeo.
-                        </video>
+                        <AutoVideo
+                          src="/1.mp4"
+                          className="w-full h-full object-cover"
+                        />
 
                         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_35%,rgba(30,24,18,0.18)_100%)]" />
 
@@ -227,7 +282,6 @@ export function CinematicIntro() {
             </div>
           </motion.div>
 
-          {/* VÉU */}
           <motion.div
             style={{ opacity: veilOpacity, scale: veilScale }}
             className="absolute inset-0 z-20 pointer-events-none"
@@ -235,7 +289,6 @@ export function CinematicIntro() {
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.48)_42%,rgba(248,245,241,0.93)_100%)]" />
           </motion.div>
 
-          {/* ABOUT */}
           <motion.div
             style={{
               opacity: aboutOpacity,
@@ -247,7 +300,6 @@ export function CinematicIntro() {
           >
             <div className="container mx-auto px-8 lg:px-12 py-20">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center max-w-6xl mx-auto">
-                {/* VIDEO */}
                 <motion.div
                   style={{
                     y: mediaY,
@@ -260,12 +312,8 @@ export function CinematicIntro() {
                     <div className="absolute inset-0 rounded-[2rem] border border-gold/22 -translate-x-3 translate-y-3 z-0" />
 
                     <div className="absolute inset-0 rounded-[2rem] overflow-hidden z-10 bg-sage-light shadow-[0_24px_70px_rgba(0,0,0,0.08)] border border-dark/5">
-                      <video
+                      <AutoVideo
                         src="/vid1.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-sage/10 mix-blend-multiply" />
@@ -274,7 +322,6 @@ export function CinematicIntro() {
                   </div>
                 </motion.div>
 
-                {/* TEXT */}
                 <div className="order-1 lg:order-2 flex flex-col justify-center text-center lg:text-left items-center lg:items-start">
                   <div className="flex items-center gap-4 mb-6">
                     <span className="uppercase tracking-[0.2em] text-sm text-gold-dark font-medium">
@@ -310,7 +357,6 @@ export function CinematicIntro() {
         </div>
       </section>
 
-      {/* ========================= MOBILE SEM ANIMAÇÃO ========================= */}
       <section className="relative md:hidden bg-[#f8f5f1] overflow-hidden">
         <div className="absolute inset-0 bg-[#f8f5f1]" />
         <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[320px] h-[180px] rounded-full bg-gold/6 blur-3xl pointer-events-none" />
@@ -390,12 +436,8 @@ export function CinematicIntro() {
               <div className="relative aspect-[4/5] w-full max-w-[320px] mx-auto mb-8">
                 <div className="absolute inset-0 rounded-[1.8rem] border border-gold/20 -translate-x-2 translate-y-2" />
                 <div className="absolute inset-0 rounded-[1.8rem] overflow-hidden bg-sage-light border border-dark/5 shadow-[0_18px_48px_rgba(0,0,0,0.07)]">
-                  <video
+                  <AutoVideo
                     src="/vid1.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-sage/10 mix-blend-multiply" />

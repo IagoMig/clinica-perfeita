@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
 import { BotanicalMotif } from '../components/BotanicalMotif';
@@ -108,17 +108,61 @@ function MediaRenderer({
   media: MediaAsset;
   className?: string;
 }) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    if (!video || media.type !== 'video') return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const tryPlay = async () => {
+      try {
+        await video.play();
+      } catch (error) {
+        console.warn('Autoplay bloqueado no mobile:', error);
+      }
+    };
+
+    if (video.readyState >= 2) {
+      tryPlay();
+    } else {
+      video.addEventListener('canplay', tryPlay);
+      video.addEventListener('loadeddata', tryPlay);
+
+      return () => {
+        video.removeEventListener('canplay', tryPlay);
+        video.removeEventListener('loadeddata', tryPlay);
+      };
+    }
+  }, [media]);
+
   if (media.type === 'video') {
     return (
       <video
+        ref={videoRef}
         src={media.src}
         poster={media.poster}
         autoPlay
         muted
+        defaultMuted
         loop
         playsInline
+        preload="auto"
+        controls={false}
+        disablePictureInPicture
+        controlsList="nodownload nofullscreen noremoteplayback"
         className={className}
-      />
+      >
+        <source src={media.src} type="video/mp4" />
+      </video>
     );
   }
 
@@ -127,6 +171,7 @@ function MediaRenderer({
       src={media.src}
       alt={media.alt || 'Mídia da Clínica Perfeita'}
       className={className}
+      loading="lazy"
     />
   );
 }
@@ -134,7 +179,6 @@ function MediaRenderer({
 export function AboutPage() {
   return (
     <main className="bg-[#fbf7f2] text-dark overflow-hidden">
-      {/* BOTÃO VOLTAR */}
       <div className="fixed top-5 left-5 md:top-7 md:left-7 z-[60]">
         <a
           href="/"
@@ -151,7 +195,6 @@ export function AboutPage() {
         </a>
       </div>
 
-      {/* HERO */}
       <section className="relative pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[780px] h-[340px] rounded-full bg-gold/8 blur-3xl" />
@@ -194,7 +237,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* HERO VISUAL PREMIUM */}
       <section className="relative pb-24 md:pb-32">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 lg:gap-14 items-stretch">
@@ -324,7 +366,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* FAIXA DE POSICIONAMENTO */}
       <section className="relative py-20 md:py-24 bg-[#f6f1eb] overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-80px] left-[-80px] w-[260px] h-[220px] rounded-full bg-gold/7 blur-3xl" />
@@ -341,7 +382,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* BLOCO EDITORIAL */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-10 items-stretch">
@@ -389,7 +429,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* DIFERENCIAIS */}
       <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="text-center max-w-3xl mx-auto mb-14 md:mb-18">
@@ -443,7 +482,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* PILARES + DIREÇÃO */}
       <section className="relative py-24 md:py-32 bg-[#f6f1eb] overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -538,7 +576,6 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* CTA FINAL */}
       <section className="py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div {...fadeUp} className="max-w-6xl mx-auto">
