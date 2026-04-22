@@ -74,7 +74,7 @@ export function Contact() {
 
                 <div className="mt-10 lg:mt-14 space-y-4">
                   <a
-                    href="https://wa.me/5541999999999"
+                    href="https://wa.me/554132060016"
                     className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-dark text-offwhite text-xs md:text-sm uppercase tracking-[0.2em] hover:bg-dark/90 transition-all duration-500 shadow-[0_14px_35px_rgba(0,0,0,0.10)]"
                   >
                     Agendar consulta
@@ -165,10 +165,10 @@ export function Contact() {
 
                     <p className="text-lg md:text-xl font-serif text-dark leading-relaxed">
                       <a
-                        href="https://wa.me/5541999999999"
+                        href="https://wa.me/554132060016"
                         className="hover:text-gold transition-colors duration-300"
                       >
-                        +55 41 99999-9999
+                        55 41 3206-0016
                       </a>
                     </p>
                   </div>

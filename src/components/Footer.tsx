@@ -102,7 +102,7 @@ export function Footer() {
             </span>
 
             <a
-              href="https://wa.me/5541999999999"
+              href="https://wa.me/554132060016"
               className="text-sm md:text-[15px] text-dark/70 hover:text-gold-dark transition-colors"
             >
               +55 41 99999-9999

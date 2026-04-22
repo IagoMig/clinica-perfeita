@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { ArrowLeft } from 'lucide-react';
 import { BotanicalMotif } from '../components/BotanicalMotif';
 import { Footer } from '../components/Footer';
 
@@ -133,6 +134,23 @@ function MediaRenderer({
 export function AboutPage() {
   return (
     <main className="bg-[#fbf7f2] text-dark overflow-hidden">
+      {/* BOTÃO VOLTAR */}
+      <div className="fixed top-5 left-5 md:top-7 md:left-7 z-[60]">
+        <a
+          href="/"
+          className="group inline-flex items-center gap-3 rounded-full border border-[#d9c6a8]/35 bg-white/82 backdrop-blur-xl px-4 py-3 text-dark/80 shadow-[0_12px_30px_rgba(0,0,0,0.07)] transition-all duration-500 hover:-translate-y-[1px] hover:bg-white hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]"
+          aria-label="Voltar para a página inicial"
+        >
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/25 bg-[#faf5ee] text-gold-dark transition-all duration-500 group-hover:bg-gold/10">
+            <ArrowLeft size={16} />
+          </span>
+
+          <span className="text-[11px] md:text-xs uppercase tracking-[0.22em] font-medium">
+            Voltar
+          </span>
+        </a>
+      </div>
+
       {/* HERO */}
       <section className="relative pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
@@ -180,7 +198,6 @@ export function AboutPage() {
       <section className="relative pb-24 md:pb-32">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 lg:gap-14 items-stretch">
-            {/* BLOCO VISUAL GRANDE */}
             <motion.div {...fadeUp} className="xl:col-span-7">
               <div className="relative h-full min-h-[560px] md:min-h-[680px]">
                 <div className="absolute inset-0 rounded-[2.2rem] border border-gold/25 translate-x-4 translate-y-4" />
@@ -256,7 +273,6 @@ export function AboutPage() {
               </div>
             </motion.div>
 
-            {/* BLOCO LATERAL */}
             <motion.div {...fadeUp} className="xl:col-span-5">
               <div className="h-full flex flex-col gap-6">
                 <div className="rounded-[2rem] border border-[#d9c6a8]/25 bg-[rgba(255,252,248,0.82)] backdrop-blur-xl p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
