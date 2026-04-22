@@ -105,7 +105,7 @@ export function Footer() {
               href="https://wa.me/554132060016"
               className="text-sm md:text-[15px] text-dark/70 hover:text-gold-dark transition-colors"
             >
-              +55 41 99999-9999
+              +55 41 3206-0016
             </a>
 
             <a
@@ -121,7 +121,7 @@ export function Footer() {
 
             <div className="flex gap-3 mt-6">
               <a
-                href="#"
+                href="https://www.instagram.com/clinicaperfeita/"
                 className="w-10 h-10 rounded-full border border-gold/15 bg-white/60 flex items-center justify-center text-dark/55 hover:text-gold-dark hover:border-gold/35 transition-all duration-300"
                 aria-label="Instagram"
               >
@@ -141,24 +141,6 @@ export function Footer() {
                 </svg>
               </a>
 
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full border border-gold/15 bg-white/60 flex items-center justify-center text-dark/55 hover:text-gold-dark hover:border-gold/35 transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <svg
-                  width="17"
-                  height="17"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>

@@ -10,9 +10,6 @@ export function CinematicIntro() {
     offset: ['start start', 'end end'],
   });
 
-  /**
-   * DESKTOP ANIMATIONS
-   */
   const heroOpacity = useTransform(
     scrollYProgress,
     [0, 0.18, 0.38, 0.52],
@@ -22,13 +19,13 @@ export function CinematicIntro() {
   const heroScale = useTransform(
     scrollYProgress,
     [0, 0.35, 0.52],
-    [1, 0.985, 0.94]
+    [1, 0.985, 0.945]
   );
 
   const heroY = useTransform(
     scrollYProgress,
     [0, 0.25, 0.52],
-    [0, -28, -90]
+    [0, -24, -84]
   );
 
   const heroBlur = useTransform(
@@ -40,13 +37,13 @@ export function CinematicIntro() {
   const heroBgScale = useTransform(
     scrollYProgress,
     [0, 0.5],
-    [1, 1.04]
+    [1, 1.035]
   );
 
   const heroBgOpacity = useTransform(
     scrollYProgress,
     [0, 0.4, 0.55],
-    [1, 0.92, 0.5]
+    [1, 0.94, 0.56]
   );
 
   const aboutOpacity = useTransform(
@@ -108,20 +105,19 @@ export function CinematicIntro() {
       {/* ========================= DESKTOP / TABLET ========================= */}
       <section
         ref={sectionRef}
-        className="relative hidden md:block h-[215vh] bg-offwhite"
+        className="relative hidden md:block h-[210vh] bg-[#f8f5f1]"
       >
         <div className="sticky top-0 h-screen overflow-hidden">
-          {/* BASE */}
-          <div className="absolute inset-0 bg-offwhite" />
+          <div className="absolute inset-0 bg-[#f8f5f1]" />
 
-          {/* FUNDO MAIS SUTIL */}
+          {/* FUNDO */}
           <motion.div
             style={{ scale: heroBgScale, opacity: heroBgOpacity }}
             className="absolute inset-0 pointer-events-none"
           >
-            <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[620px] h-[260px] rounded-full bg-gold/5 blur-3xl" />
-            <div className="absolute bottom-[-80px] right-[-20px] w-[260px] h-[180px] rounded-full bg-sage/5 blur-3xl" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.96),rgba(255,255,255,0.86)_42%,rgba(0,0,0,0.015)_100%)]" />
+            <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[760px] h-[300px] rounded-full bg-gold/6 blur-3xl" />
+            <div className="absolute bottom-[-90px] right-[-10px] w-[320px] h-[220px] rounded-full bg-[#d8c8b4]/20 blur-3xl" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.95),rgba(248,245,241,0.92)_44%,rgba(0,0,0,0.015)_100%)]" />
           </motion.div>
 
           {/* HERO */}
@@ -136,104 +132,77 @@ export function CinematicIntro() {
           >
             <div className="container mx-auto px-8 lg:px-12 pt-24 pb-16">
               <div className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-                  {/* TEXT */}
-                  <div className="lg:col-span-8 flex flex-col items-center text-center mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+                  {/* TEXTO */}
+                  <div className="lg:col-span-6 flex flex-col items-start text-left">
                     <div className="mb-6">
-                      <div className="inline-flex items-center gap-3 rounded-full border border-gold/15 bg-white/80 px-4 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.035)]">
-                        <BotanicalMotif size={16} className="opacity-50" />
-                        <span className="text-[10px] lg:text-[11px] uppercase tracking-[0.26em] text-dark/55">
+                      <div className="inline-flex items-center gap-3 rounded-full border border-gold/15 bg-white/80 px-4 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
+                        <BotanicalMotif size={16} className="opacity-45" />
+                        <span className="text-[10px] lg:text-[11px] uppercase tracking-[0.26em] text-dark/50">
                           Estética avançada • cuidado individualizado
                         </span>
                       </div>
                     </div>
 
-                    <h1 className="text-5xl lg:text-[5.1rem] font-serif text-dark leading-[0.98] mb-5 max-w-4xl">
+                    <h1 className="text-5xl lg:text-[5rem] font-serif text-dark leading-[0.96] mb-5 max-w-3xl">
                       Beleza refinada,
                       <span className="block text-gold">
                         resultado natural
                       </span>
                     </h1>
 
-                    <h2 className="text-lg lg:text-[1.55rem] font-serif italic text-dark/68 mb-6 max-w-2xl leading-relaxed">
-                      Uma experiência estética pensada para valorizar sua essência
-                      com técnica, elegância e precisão.
-                    </h2>
-
-                    <div className="h-[1px] w-[78px] bg-gold/80 mb-7" />
-
-                    <p className="text-base lg:text-lg text-dark/72 max-w-2xl font-light mb-9 leading-[1.9]">
-                      Na Clínica Perfeita, cada atendimento é conduzido com escuta
-                      cuidadosa, protocolos modernos e atenção genuína aos detalhes.
-                      Um espaço pensado para unir conforto, segurança e sofisticação
-                      em cada etapa da sua jornada estética.
+                    <p className="text-lg lg:text-[1.28rem] font-serif italic text-dark/68 mb-8 max-w-xl leading-relaxed">
+                      Estética avançada com leveza, precisão e uma experiência
+                      pensada para acolher você.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center">
-                      <a
-                        href="#services"
-                        className="inline-flex items-center justify-center px-7 py-3.5 bg-dark text-offwhite rounded-full text-xs uppercase tracking-[0.18em] hover:bg-dark/90 transition-all duration-500 shadow-[0_14px_36px_rgba(0,0,0,0.10)]"
-                      >
-                        Conheça os tratamentos
-                      </a>
-
+                    <div className="flex flex-col sm:flex-row gap-4 mb-8">
                       <a
                         href="#contact"
-                        className="inline-flex items-center justify-center px-7 py-3.5 border border-gold/80 text-gold rounded-full text-xs uppercase tracking-[0.18em] hover:bg-gold hover:text-dark transition-all duration-500"
+                        className="inline-flex items-center justify-center px-7 py-3.5 bg-dark text-offwhite rounded-full text-xs uppercase tracking-[0.18em] hover:bg-dark/90 transition-all duration-500 shadow-[0_14px_36px_rgba(0,0,0,0.10)]"
                       >
                         Agendar avaliação
                       </a>
+
+                      <a
+                        href="#services"
+                        className="inline-flex items-center justify-center px-7 py-3.5 border border-gold/80 text-gold rounded-full text-xs uppercase tracking-[0.18em] hover:bg-gold hover:text-dark transition-all duration-500"
+                      >
+                        Ver tratamentos
+                      </a>
                     </div>
 
-                    <div className="grid grid-cols-3 gap-4 w-full max-w-3xl">
-                      <div className="rounded-[24px] border border-dark/6 bg-white/72 px-5 py-5 shadow-[0_8px_24px_rgba(0,0,0,0.035)] text-center">
-                        <p className="text-[10px] uppercase tracking-[0.22em] text-dark/42 mb-2">
-                          Atendimento
-                        </p>
-                        <p className="text-dark text-sm font-medium leading-relaxed">
-                          Exclusivo e humanizado
-                        </p>
-                      </div>
-
-                      <div className="rounded-[24px] border border-dark/6 bg-white/72 px-5 py-5 shadow-[0_8px_24px_rgba(0,0,0,0.035)] text-center">
-                        <p className="text-[10px] uppercase tracking-[0.22em] text-dark/42 mb-2">
-                          Estrutura
-                        </p>
-                        <p className="text-dark text-sm font-medium leading-relaxed">
-                          Ambiente sereno e sofisticado
-                        </p>
-                      </div>
-
-                      <div className="rounded-[24px] border border-dark/6 bg-white/72 px-5 py-5 shadow-[0_8px_24px_rgba(0,0,0,0.035)] text-center">
-                        <p className="text-[10px] uppercase tracking-[0.22em] text-dark/42 mb-2">
-                          Resultado
-                        </p>
-                        <p className="text-dark text-sm font-medium leading-relaxed">
-                          Harmonia, leveza e naturalidade
-                        </p>
-                      </div>
+                    <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.24em] text-dark/42">
+                      <span>Naturalidade</span>
+                      <span className="text-gold/70">•</span>
+                      <span>Sofisticação</span>
+                      <span className="text-gold/70">•</span>
+                      <span>Acolhimento</span>
                     </div>
                   </div>
 
-                  {/* LOGO */}
-                  <div className="lg:col-span-4 relative w-full max-w-[360px] mx-auto">
-                    <div className="relative aspect-[4/5] w-full">
-                      <div className="absolute inset-0 rounded-[2rem] border border-gold/18 translate-x-3 translate-y-3" />
-                      <div className="absolute inset-0 rounded-[2rem] bg-gold/5 blur-2xl scale-[0.96]" />
+                  {/* IMAGEM */}
+                  <div className="lg:col-span-6 relative w-full">
+                    <div className="relative max-w-[520px] ml-auto">
+                      <div className="absolute inset-0 rounded-[2.2rem] border border-gold/20 translate-x-4 translate-y-4" />
+                      <div className="absolute inset-0 rounded-[2.2rem] bg-gold/6 blur-2xl scale-[0.98]" />
 
-                      <div className="absolute inset-0 rounded-[2rem] overflow-hidden bg-white/88 border border-dark/5 shadow-[0_20px_60px_rgba(0,0,0,0.07)]">
-                        <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(201,169,110,0.04),transparent_48%)]" />
+                      <div className="relative aspect-[4/5] rounded-[2.2rem] overflow-hidden border border-dark/5 bg-white/85 shadow-[0_28px_75px_rgba(0,0,0,0.08)]">
+                        <video
+                        src="/1.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                        >
+                        Seu navegador não suporta vídeo.
+                        </video>
 
-                        <div className="absolute inset-0 flex items-center justify-center p-12">
-                          <img
-                            src="/logo.png"
-                            alt="Logo Clínica Perfeita"
-                            className="w-[72%] h-[72%] object-contain opacity-[0.34] drop-shadow-[0_14px_28px_rgba(0,0,0,0.04)]"
-                          />
-                        </div>
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_35%,rgba(30,24,18,0.18)_100%)]" />
 
-                        <div className="absolute top-5 left-1/2 -translate-x-1/2">
-                          <div className="rounded-full border border-white/70 bg-white/80 px-4 py-2 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
+                        <div className="absolute top-5 left-5">
+                          <div className="rounded-full border border-white/55 bg-white/76 backdrop-blur-md px-4 py-2 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
                             <span className="text-[9px] uppercase tracking-[0.24em] text-dark/50">
                               Clínica Perfeita
                             </span>
@@ -241,13 +210,12 @@ export function CinematicIntro() {
                         </div>
 
                         <div className="absolute left-5 right-5 bottom-5">
-                          <div className="rounded-[1.35rem] border border-white/70 bg-white/82 px-4 py-4 shadow-[0_12px_30px_rgba(0,0,0,0.05)]">
-                            <p className="text-[10px] uppercase tracking-[0.22em] text-dark/40 mb-2 text-center">
-                              Excelência em estética
+                          <div className="rounded-[1.35rem] border border-white/40 bg-white/72 backdrop-blur-xl px-5 py-4 shadow-[0_14px_32px_rgba(0,0,0,0.06)]">
+                            <p className="text-[10px] uppercase tracking-[0.22em] text-dark/42 mb-2">
+                              Um espaço pensado para cuidar
                             </p>
-                            <p className="text-dark/72 text-sm leading-relaxed text-center">
-                              Procedimentos pensados para valorizar sua beleza com
-                              equilíbrio, leveza e sofisticação.
+                            <p className="text-dark/72 text-sm leading-relaxed">
+                              Uma estética mais leve, sensível e elegante em cada detalhe.
                             </p>
                           </div>
                         </div>
@@ -264,7 +232,7 @@ export function CinematicIntro() {
             style={{ opacity: veilOpacity, scale: veilScale }}
             className="absolute inset-0 z-20 pointer-events-none"
           >
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.5)_42%,rgba(255,255,255,0.92)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.48)_42%,rgba(248,245,241,0.93)_100%)]" />
           </motion.div>
 
           {/* ABOUT */}
@@ -343,74 +311,66 @@ export function CinematicIntro() {
       </section>
 
       {/* ========================= MOBILE SEM ANIMAÇÃO ========================= */}
-      <section className="relative md:hidden bg-offwhite overflow-hidden">
-        <div className="absolute inset-0 bg-offwhite" />
-        <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[320px] h-[180px] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[-40px] right-[-20px] w-[180px] h-[140px] rounded-full bg-sage/5 blur-3xl pointer-events-none" />
+      <section className="relative md:hidden bg-[#f8f5f1] overflow-hidden">
+        <div className="absolute inset-0 bg-[#f8f5f1]" />
+        <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[320px] h-[180px] rounded-full bg-gold/6 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-40px] right-[-20px] w-[180px] h-[140px] rounded-full bg-[#d8c8b4]/20 blur-3xl pointer-events-none" />
 
         <div className="relative container mx-auto px-6 pt-28 pb-16">
           <div className="flex flex-col items-center text-center">
             <div className="mb-5">
               <div className="inline-flex items-center gap-2.5 rounded-full border border-gold/15 bg-white/85 px-3.5 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
-                <BotanicalMotif size={15} className="opacity-50" />
+                <BotanicalMotif size={15} className="opacity-45" />
                 <span className="text-[9px] uppercase tracking-[0.22em] text-dark/55">
                   Estética avançada
                 </span>
               </div>
             </div>
 
-            <h1 className="text-[2.6rem] leading-[1.02] font-serif text-dark mb-4 max-w-sm">
+            <h1 className="text-[2.7rem] leading-[1.02] font-serif text-dark mb-4 max-w-sm">
               Beleza refinada,
               <span className="block text-gold">resultado natural</span>
             </h1>
 
-            <h2 className="text-base font-serif italic text-dark/68 mb-5 max-w-[20rem] leading-relaxed">
-              Uma experiência estética pensada para valorizar sua essência com
-              técnica e elegância.
-            </h2>
-
-            <div className="h-[1px] w-[64px] bg-gold/80 mb-6" />
-
-            <p className="text-[15px] text-dark/72 font-light leading-7 mb-8 max-w-sm">
-              Cada atendimento é conduzido com atenção aos detalhes, conforto,
-              segurança e uma abordagem estética sofisticada.
+            <p className="text-base font-serif italic text-dark/68 mb-7 max-w-[19rem] leading-relaxed">
+              Estética avançada com leveza, precisão e uma experiência acolhedora.
             </p>
 
             <div className="w-full flex flex-col gap-3 mb-8">
               <a
-                href="#services"
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-dark text-offwhite rounded-full text-[11px] uppercase tracking-[0.18em] shadow-[0_12px_28px_rgba(0,0,0,0.09)]"
-              >
-                Conheça os tratamentos
-              </a>
-
-              <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-6 py-3.5 border border-gold/80 text-gold rounded-full text-[11px] uppercase tracking-[0.18em]"
+                className="inline-flex items-center justify-center px-6 py-3.5 bg-dark text-offwhite rounded-full text-[11px] uppercase tracking-[0.18em] shadow-[0_12px_28px_rgba(0,0,0,0.09)]"
               >
                 Agendar avaliação
               </a>
+
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center px-6 py-3.5 border border-gold/80 text-gold rounded-full text-[11px] uppercase tracking-[0.18em]"
+              >
+                Ver tratamentos
+              </a>
             </div>
 
-            <div className="relative w-full max-w-[320px] mx-auto mb-10">
+            <div className="relative w-full max-w-[340px] mx-auto mb-8">
               <div className="relative aspect-[4/5] w-full">
                 <div className="absolute inset-0 rounded-[1.8rem] border border-gold/18 translate-x-2.5 translate-y-2.5" />
                 <div className="absolute inset-0 rounded-[1.8rem] overflow-hidden bg-white/90 border border-dark/5 shadow-[0_18px_48px_rgba(0,0,0,0.07)]">
-                  <div className="absolute inset-0 flex items-center justify-center p-10">
-                    <img
-                      src="/logo.png"
-                      alt="Logo Clínica Perfeita"
-                      className="w-[68%] h-[68%] object-contain opacity-[0.28]"
-                    />
-                  </div>
+                  <img
+                    src="/hero-clinic.jpg"
+                    alt="Ambiente sofisticado da Clínica Perfeita"
+                    className="w-full h-full object-cover"
+                  />
+
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06)_0%,rgba(255,255,255,0.02)_35%,rgba(30,24,18,0.18)_100%)]" />
 
                   <div className="absolute left-4 right-4 bottom-4">
-                    <div className="rounded-[1.2rem] border border-white/70 bg-white/84 px-4 py-3 shadow-[0_10px_24px_rgba(0,0,0,0.04)]">
+                    <div className="rounded-[1.2rem] border border-white/55 bg-white/78 backdrop-blur-xl px-4 py-3 shadow-[0_10px_24px_rgba(0,0,0,0.04)]">
                       <p className="text-[9px] uppercase tracking-[0.22em] text-dark/40 mb-1.5 text-center">
-                        Excelência em estética
+                        Cuidado, leveza e sofisticação
                       </p>
                       <p className="text-dark/72 text-sm leading-relaxed text-center">
-                        Beleza valorizada com leveza e sofisticação.
+                        Uma experiência estética mais acolhedora em cada detalhe.
                       </p>
                     </div>
                   </div>
@@ -418,33 +378,12 @@ export function CinematicIntro() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 w-full max-w-sm mb-14">
-              <div className="rounded-[22px] border border-dark/6 bg-white/75 px-5 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-dark/40 mb-1.5">
-                  Atendimento
-                </p>
-                <p className="text-dark text-sm font-medium">
-                  Exclusivo e humanizado
-                </p>
-              </div>
-
-              <div className="rounded-[22px] border border-dark/6 bg-white/75 px-5 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-dark/40 mb-1.5">
-                  Estrutura
-                </p>
-                <p className="text-dark text-sm font-medium">
-                  Ambiente sereno e sofisticado
-                </p>
-              </div>
-
-              <div className="rounded-[22px] border border-dark/6 bg-white/75 px-5 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
-                <p className="text-[10px] uppercase tracking-[0.22em] text-dark/40 mb-1.5">
-                  Resultado
-                </p>
-                <p className="text-dark text-sm font-medium">
-                  Harmonia, leveza e naturalidade
-                </p>
-              </div>
+            <div className="flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.22em] text-dark/42 mb-14 flex-wrap">
+              <span>Naturalidade</span>
+              <span className="text-gold/70">•</span>
+              <span>Sofisticação</span>
+              <span className="text-gold/70">•</span>
+              <span>Acolhimento</span>
             </div>
 
             <div className="w-full">

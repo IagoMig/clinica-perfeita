@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const services = [
@@ -84,6 +84,21 @@ const headerAnimation = {
   transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
 };
 
+function useIsDesktop() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(media.matches);
+
+    update();
+    media.addEventListener('change', update);
+    return () => media.removeEventListener('change', update);
+  }, []);
+
+  return isDesktop;
+}
+
 function FullscreenImageModal({
   open,
   image,
@@ -95,11 +110,27 @@ function FullscreenImageModal({
   title: string;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open, onClose]);
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[120] bg-black/88 backdrop-blur-md p-4 md:p-8"
+          className="fixed inset-0 z-[120] bg-black/90 backdrop-blur-md p-4 md:p-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -107,12 +138,19 @@ function FullscreenImageModal({
           <button
             onClick={onClose}
             aria-label="Fechar imagem"
-            className="absolute top-4 right-4 md:top-6 md:right-6 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/20 bg-white/10 text-white text-xl backdrop-blur-md hover:bg-white/15 transition-all duration-300"
+            className="absolute top-4 right-4 md:top-6 md:right-6 inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-3 text-white text-[11px] uppercase tracking-[0.18em] backdrop-blur-md hover:bg-white/15 transition-all duration-300"
           >
-            ✕
+            <span className="text-base leading-none">✕</span>
+            Fechar
           </button>
 
-          <div className="w-full h-full flex items-center justify-center">
+          <div
+            className="absolute inset-0"
+            onClick={onClose}
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 w-full h-full flex items-center justify-center">
             <motion.img
               src={image}
               alt={title}
@@ -140,35 +178,57 @@ function ServiceLuxuryCard({
   const numberStr = `0${index + 1}`;
   const [isFullscreenOpen, setIsFullscreenOpen] = useState(false);
   const isContain = service.imageFit === 'contain';
+  const isDesktop = useIsDesktop();
 
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 90%', 'end 20%'],
   });
 
-  const sectionOpacity = useTransform(scrollYProgress, [0, 0.18, 0.45], [0.4, 0.75, 1]);
-  const sectionY = useTransform(scrollYProgress, [0, 1], [42, 0]);
+  const sectionOpacityMotion = useTransform(scrollYProgress, [0, 0.18, 0.45], [0.4, 0.75, 1]);
+  const sectionYMotion = useTransform(scrollYProgress, [0, 1], [42, 0]);
 
-  const cardOpacity = useTransform(scrollYProgress, [0.05, 0.28, 0.55], [0, 0.82, 1]);
-  const cardX = useTransform(scrollYProgress, [0, 1], [-42, 0]);
-  const cardY = useTransform(scrollYProgress, [0, 1], [22, 0]);
+  const cardOpacityMotion = useTransform(scrollYProgress, [0.05, 0.28, 0.55], [0, 0.82, 1]);
+  const cardXMotion = useTransform(scrollYProgress, [0, 1], [-42, 0]);
+  const cardYMotion = useTransform(scrollYProgress, [0, 1], [22, 0]);
 
-  const mediaOpacity = useTransform(scrollYProgress, [0.08, 0.3, 0.55], [0, 0.78, 1]);
-  const mediaX = useTransform(scrollYProgress, [0, 1], [54, 0]);
-  const mediaScale = useTransform(scrollYProgress, [0, 0.4, 1], [1.04, 1.015, 1]);
-  const mediaY = useTransform(scrollYProgress, [0, 1], [28, 0]);
+  const mediaOpacityMotion = useTransform(scrollYProgress, [0.08, 0.3, 0.55], [0, 0.78, 1]);
+  const mediaXMotion = useTransform(scrollYProgress, [0, 1], [54, 0]);
+  const mediaScaleMotion = useTransform(scrollYProgress, [0, 0.4, 1], [1.04, 1.015, 1]);
+  const mediaYMotion = useTransform(scrollYProgress, [0, 1], [28, 0]);
 
-  const badgeY = useTransform(scrollYProgress, [0, 1], [-18, 0]);
-  const badgeOpacity = useTransform(scrollYProgress, [0.2, 0.45], [0, 1]);
+  const badgeYMotion = useTransform(scrollYProgress, [0, 1], [-18, 0]);
+  const badgeOpacityMotion = useTransform(scrollYProgress, [0.2, 0.45], [0, 1]);
 
-  const frameScale = useTransform(scrollYProgress, [0, 0.4], [0.96, 1]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.3, 1], [0.1, 0.18, 0.12]);
+  const frameScaleMotion = useTransform(scrollYProgress, [0, 0.4], [0.96, 1]);
+  const glowOpacityMotion = useTransform(scrollYProgress, [0, 0.3, 1], [0.1, 0.18, 0.12]);
+
+  const sectionStyle = isDesktop
+    ? { opacity: sectionOpacityMotion, y: sectionYMotion }
+    : undefined;
+
+  const cardStyle = isDesktop
+    ? { opacity: cardOpacityMotion, x: cardXMotion, y: cardYMotion }
+    : undefined;
+
+  const mediaStyle = isDesktop
+    ? {
+        opacity: mediaOpacityMotion,
+        x: mediaXMotion,
+        scale: mediaScaleMotion,
+        y: mediaYMotion,
+      }
+    : undefined;
+
+  const frameStyle = isDesktop ? { scale: frameScaleMotion } : undefined;
+  const glowStyle = isDesktop ? { opacity: glowOpacityMotion } : { opacity: 0.12 };
+  const badgeStyle = isDesktop ? { y: badgeYMotion, opacity: badgeOpacityMotion } : undefined;
 
   return (
     <>
       <motion.article
         ref={ref}
-        style={{ opacity: sectionOpacity, y: sectionY }}
+        style={sectionStyle}
         className="relative py-10 md:py-16 lg:py-24"
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12">
@@ -182,7 +242,7 @@ function ServiceLuxuryCard({
 
             <div className="relative z-10 grid grid-cols-1 xl:grid-cols-12 items-stretch gap-0">
               <motion.div
-                style={{ opacity: cardOpacity, x: cardX, y: cardY }}
+                style={cardStyle}
                 className="xl:col-span-5 p-4 md:p-8 lg:p-10"
               >
                 <div className="relative h-full min-h-[unset] md:min-h-[520px] rounded-[1.45rem] md:rounded-[1.8rem] border border-[#d9c6a8]/35 bg-[rgba(255,252,248,0.86)] backdrop-blur-md shadow-[0_14px_35px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col">
@@ -276,16 +336,16 @@ function ServiceLuxuryCard({
               </motion.div>
 
               <motion.div
-                style={{ opacity: mediaOpacity, x: mediaX, scale: mediaScale, y: mediaY }}
+                style={mediaStyle}
                 className="xl:col-span-7 p-4 md:p-8 lg:p-10 pt-0 xl:pt-10"
               >
                 <div className="relative h-full flex items-center">
                   <motion.div
-                    style={{ scale: frameScale }}
+                    style={frameStyle}
                     className="relative w-full rounded-[1.45rem] md:rounded-[1.9rem] overflow-hidden border border-[#d4be9c]/45 bg-[#efe7dd] shadow-[0_20px_55px_rgba(0,0,0,0.07)] min-h-[280px] sm:min-h-[360px] md:min-h-[520px]"
                   >
                     <motion.div
-                      style={{ opacity: glowOpacity }}
+                      style={glowStyle}
                       className="absolute inset-0 bg-[#d8b382]/20 blur-2xl scale-[1.02]"
                     />
 
@@ -313,7 +373,7 @@ function ServiceLuxuryCard({
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_56%,rgba(0,0,0,0.04)_100%)] md:bg-[radial-gradient(circle_at_center,transparent_54%,rgba(0,0,0,0.06)_100%)]" />
 
                     <motion.div
-                      style={{ y: badgeY, opacity: badgeOpacity }}
+                      style={badgeStyle}
                       className="absolute top-4 left-4 md:top-6 md:left-6"
                     >
                       <div className="rounded-full border border-white/45 bg-white/72 backdrop-blur-md px-4 py-2 shadow-[0_10px_24px_rgba(0,0,0,0.06)]">
@@ -323,7 +383,7 @@ function ServiceLuxuryCard({
                       </div>
                     </motion.div>
 
-                    <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+                    <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6 flex gap-2">
                       <button
                         onClick={() => setIsFullscreenOpen(true)}
                         className="inline-flex items-center justify-center gap-2 rounded-full border border-white/45 bg-white/78 backdrop-blur-md px-4 py-2.5 text-[10px] md:text-[11px] uppercase tracking-[0.22em] text-[#72665d] shadow-[0_10px_24px_rgba(0,0,0,0.06)] hover:bg-white transition-all duration-300"
@@ -342,10 +402,10 @@ function ServiceLuxuryCard({
             <div className="relative z-10 border-t border-[#e6dbce] bg-[rgba(255,255,255,0.46)]">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 px-5 md:px-10 lg:px-12 py-6 md:py-8">
                 <motion.div
-                  initial={{ opacity: 0, x: -18 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
-                  transition={{ duration: 0.7 }}
+                  initial={isDesktop ? { opacity: 0, x: -18 } : false}
+                  whileInView={isDesktop ? { opacity: 1, x: 0 } : undefined}
+                  viewport={isDesktop ? { once: true, amount: 0.6 } : undefined}
+                  transition={isDesktop ? { duration: 0.7 } : undefined}
                   className="flex items-center gap-4"
                 >
                   <div className="w-11 h-11 rounded-full border border-[#d8c4a4]/45 bg-white/70 flex items-center justify-center text-[#c79d62] text-lg shadow-[0_8px_20px_rgba(0,0,0,0.03)]">
@@ -362,10 +422,10 @@ function ServiceLuxuryCard({
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
-                  transition={{ duration: 0.7, delay: 0.08 }}
+                  initial={isDesktop ? { opacity: 0, y: 18 } : false}
+                  whileInView={isDesktop ? { opacity: 1, y: 0 } : undefined}
+                  viewport={isDesktop ? { once: true, amount: 0.6 } : undefined}
+                  transition={isDesktop ? { duration: 0.7, delay: 0.08 } : undefined}
                   className="text-center"
                 >
                   <p className="text-[11px] uppercase tracking-[0.28em] text-[#b88f57] mb-3">
@@ -378,10 +438,10 @@ function ServiceLuxuryCard({
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, x: 18 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.6 }}
-                  transition={{ duration: 0.7, delay: 0.12 }}
+                  initial={isDesktop ? { opacity: 0, x: 18 } : false}
+                  whileInView={isDesktop ? { opacity: 1, x: 0 } : undefined}
+                  viewport={isDesktop ? { once: true, amount: 0.6 } : undefined}
+                  transition={isDesktop ? { duration: 0.7, delay: 0.12 } : undefined}
                   className="flex items-center justify-start md:justify-end gap-4"
                 >
                   <div className="w-11 h-11 rounded-full border border-[#d8c4a4]/45 bg-white/70 flex items-center justify-center text-[#c79d62] text-lg shadow-[0_8px_20px_rgba(0,0,0,0.03)]">
