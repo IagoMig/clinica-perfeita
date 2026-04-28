@@ -1,9 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 
 const services = [
   {
+    id: 'laser-co2',
+    slug: 'laser-co2-curitiba',
+    title: 'Laser CO₂',
+    description:
+      'O carro-chefe da Clínica Perfeita. Um tratamento avançado para renovação da pele, melhora da textura, cicatrizes, linhas finas, poros e rejuvenescimento com alta precisão.',
+    image: '/services/laser-co2.jpeg',
+    imageFit: 'cover',
+    imagePosition: 'center center',
+  },
+  {
     id: 'harmonizacao',
+    slug: 'harmonizacao-facial-curitiba',
     title: 'Harmonização Facial',
     description:
       'Um conjunto de procedimentos estéticos combinados para melhorar a simetria do rosto, transformar algumas características e retardar o envelhecimento da pele, sempre respeitando seus traços naturais.',
@@ -13,6 +25,7 @@ const services = [
   },
   {
     id: 'bioestimuladores',
+    slug: 'bioestimuladores-curitiba',
     title: 'Bioestimuladores',
     description:
       'Substâncias injetáveis que estimulam as células do próprio corpo a produzir colágeno, promovendo um efeito rejuvenescedor natural, gradual e duradouro, restaurando a firmeza da pele.',
@@ -22,6 +35,7 @@ const services = [
   },
   {
     id: 'preenchimento',
+    slug: 'preenchimento-labial-curitiba',
     title: 'Preenchimento Labial',
     description:
       'Técnica minimamente invasiva para delinear o contorno, aumentar o volume ou projetar os lábios, utilizando ácido hialurônico para um resultado elegante, hidratado e perfeitamente proporcional.',
@@ -31,6 +45,7 @@ const services = [
   },
   {
     id: 'botox',
+    slug: 'botox-curitiba',
     title: 'Toxina Botulínica',
     description:
       'O tratamento padrão-ouro para suavizar rugas e linhas de expressão dinâmicas.',
@@ -40,18 +55,20 @@ const services = [
   },
   {
     id: 'skinbooster',
+    slug: 'skinbooster-curitiba',
     title: 'Skinbooster',
     description:
-      'Hidratação profunda que melhora elasticidade e suaviza linhas.',
+      'Hidratação profunda que melhora elasticidade, viço, qualidade da pele e suaviza linhas finas.',
     image: '/services/skinbooster.jpeg',
     imageFit: 'cover',
     imagePosition: 'center center',
   },
   {
     id: 'limpeza',
+    slug: 'limpeza-de-pele-curitiba',
     title: 'Limpeza de Pele',
     description:
-      'Remove impurezas e melhora a textura da pele.',
+      'Remove impurezas, auxilia no controle da oleosidade, melhora a textura da pele e prepara o rosto para outros tratamentos.',
     image: '/services/limpeza.jpeg',
     imageFit: 'cover',
     imagePosition: 'center center',
@@ -180,6 +197,9 @@ function ServiceLuxuryCard({
   const isContain = service.imageFit === 'contain';
   const isDesktop = useIsDesktop();
 
+  const hasPage = 'slug' in service && Boolean(service.slug);
+  const procedureLink = hasPage ? `/procedimentos/${service.slug}` : '#contact';
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 90%', 'end 20%'],
@@ -264,7 +284,16 @@ function ServiceLuxuryCard({
 
                     <div className="max-w-[440px]">
                       <h3 className="text-[1.95rem] sm:text-[2.15rem] md:text-[3rem] lg:text-[3.55rem] font-serif text-[#2c241f] leading-[0.96] mb-5 md:mb-6">
-                        {service.title}
+                        {hasPage ? (
+                          <Link
+                            to={procedureLink}
+                            className="hover:text-[#c79d62] transition-colors duration-300"
+                          >
+                            {service.title}
+                          </Link>
+                        ) : (
+                          service.title
+                        )}
                       </h3>
 
                       <div className="w-14 h-[1px] bg-[#c7a46a] mb-6 md:mb-7" />
@@ -274,13 +303,23 @@ function ServiceLuxuryCard({
                       </p>
 
                       <div className="mt-7 md:mt-8 flex flex-col sm:flex-row gap-3">
-                        <a
-                          href="#contact"
-                          className="inline-flex items-center justify-center gap-3 rounded-full bg-[#d3a05d] text-white px-6 md:px-8 py-3.5 text-[11px] md:text-xs uppercase tracking-[0.24em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500"
-                        >
-                          Agendar avaliação
-                          <span className="text-base leading-none">→</span>
-                        </a>
+                        {hasPage ? (
+                          <Link
+                            to={procedureLink}
+                            className="inline-flex items-center justify-center gap-3 rounded-full bg-[#d3a05d] text-white px-6 md:px-8 py-3.5 text-[11px] md:text-xs uppercase tracking-[0.24em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500"
+                          >
+                            Ver procedimento
+                            <span className="text-base leading-none">→</span>
+                          </Link>
+                        ) : (
+                          <a
+                            href="#contact"
+                            className="inline-flex items-center justify-center gap-3 rounded-full bg-[#d3a05d] text-white px-6 md:px-8 py-3.5 text-[11px] md:text-xs uppercase tracking-[0.24em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500"
+                          >
+                            Agendar avaliação
+                            <span className="text-base leading-none">→</span>
+                          </a>
+                        )}
 
                         <button
                           onClick={() => setIsFullscreenOpen(true)}
