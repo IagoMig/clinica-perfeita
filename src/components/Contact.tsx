@@ -103,11 +103,11 @@ export function Contact() {
                       </h4>
 
                       <p className="text-xl md:text-2xl lg:text-[1.9rem] font-serif text-dark leading-relaxed">
-                        Avenida Visconde de Guarapuava 2764
+                        Av. Mal. Floriano Peixoto, 5810
                         <br />
-                        Conj. 1006, Centro
+                        Hauer
                         <br />
-                        Curitiba - PR
+                        Curitiba - PR, 81630-000
                       </p>
                     </div>
 
@@ -115,7 +115,7 @@ export function Contact() {
                       <div className="overflow-hidden rounded-[1.25rem] border border-gold/15 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
                         <iframe
                           title="Mapa Clínica Perfeita"
-                          src="https://www.google.com/maps?q=Avenida+Visconde+de+Guarapuava+2764+Curitiba&z=16&output=embed"
+                          src="https://maps.google.com/maps?q=Av.+Mal.+Floriano+Peixoto,+5810+-+Hauer,+Curitiba+-+PR,+81630-000&t=&z=15&ie=UTF8&iwloc=&output=embed"
                           className="w-full h-[260px] md:h-[320px]"
                           loading="lazy"
                           referrerPolicy="no-referrer-when-downgrade"
@@ -125,7 +125,7 @@ export function Contact() {
 
                     <div className="px-6 md:px-8 pb-6 md:pb-8">
                       <a
-                        href="https://maps.google.com/?q=Avenida+Visconde+de+Guarapuava+2764+Curitiba"
+                        href="https://www.google.com/maps/search/?api=1&query=Av.+Mal.+Floriano+Peixoto,+5810+-+Hauer,+Curitiba+-+PR,+81630-000"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-sm text-gold hover:text-gold-dark transition-colors border-b border-gold/30 pb-1"
