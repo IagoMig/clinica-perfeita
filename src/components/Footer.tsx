@@ -109,14 +109,14 @@ export function Footer() {
             </a>
 
             <a
-              href="https://maps.google.com/?q=Avenida+Visconde+de+Guarapuava+2764+Curitiba"
+              href="https://www.google.com/maps/search/?api=1&query=Av.+Mal.+Floriano+Peixoto,+5810+-+Hauer,+Curitiba+-+PR,+81630-000"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 text-sm text-dark/55 hover:text-gold-dark transition-colors leading-relaxed"
             >
-              Avenida Visconde de Guarapuava 2764
+              Av. Mal. Floriano Peixoto, 5810
               <br />
-              Conj. 1006, Centro — Curitiba, PR
+              Hauer — Curitiba, PR
             </a>
 
             <div className="flex gap-3 mt-6">
