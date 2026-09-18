@@ -206,7 +206,7 @@ export function CinematicIntro() {
                       </div>
                     </div>
 
-                    <h1 className="text-5xl lg:text-[5rem] font-serif text-dark leading-[0.96] mb-5 max-w-3xl">
+                    <h1 className="text-4xl md:text-5xl lg:text-[5rem] font-serif text-dark leading-[1.04] mb-5 max-w-3xl">
                       Beleza refinada,
                       <span className="block text-gold">
                         resultado natural
@@ -362,7 +362,7 @@ export function CinematicIntro() {
         <div className="absolute top-[-80px] left-1/2 -translate-x-1/2 w-[320px] h-[180px] rounded-full bg-gold/6 blur-3xl pointer-events-none" />
         <div className="absolute bottom-[-40px] right-[-20px] w-[180px] h-[140px] rounded-full bg-[#d8c8b4]/20 blur-3xl pointer-events-none" />
 
-        <div className="relative container mx-auto px-6 pt-28 pb-16">
+        <div className="relative container mx-auto px-4 sm:px-6 pt-28 pb-16">
           <div className="flex flex-col items-center text-center">
             <div className="mb-5">
               <div className="inline-flex items-center gap-2.5 rounded-full border border-gold/15 bg-white/85 px-3.5 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.03)]">
@@ -373,12 +373,12 @@ export function CinematicIntro() {
               </div>
             </div>
 
-            <h1 className="text-[2.7rem] leading-[1.02] font-serif text-dark mb-4 max-w-sm">
+            <h1 className="text-3xl sm:text-4xl font-serif text-dark leading-[1.08] mb-4 max-w-sm">
               Beleza refinada,
               <span className="block text-gold">resultado natural</span>
             </h1>
 
-            <p className="text-base font-serif italic text-dark/68 mb-7 max-w-[19rem] leading-relaxed">
+            <p className="text-sm sm:text-base font-serif italic text-dark/68 mb-7 max-w-[19rem] leading-relaxed">
               Estética avançada com leveza, precisão e uma experiência acolhedora.
             </p>
 
@@ -424,7 +424,7 @@ export function CinematicIntro() {
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-3 text-[10px] uppercase tracking-[0.22em] text-dark/42 mb-14 flex-wrap">
+            <div className="flex items-center justify-center gap-x-2.5 gap-y-1.5 text-[10px] uppercase tracking-[0.22em] text-dark/45 mb-12 flex-wrap">
               <span>Naturalidade</span>
               <span className="text-gold/70">•</span>
               <span>Sofisticação</span>
@@ -454,7 +454,7 @@ export function CinematicIntro() {
                   </span>
                 </div>
 
-                <h2 className="text-[2.15rem] font-serif text-dark leading-[1.08] mb-6 max-w-sm">
+                <h2 className="text-2xl sm:text-3xl font-serif text-dark leading-[1.1] mb-6 max-w-sm">
                   A naturalidade como
                   <span className="block italic text-sage-dark">
                     assinatura.

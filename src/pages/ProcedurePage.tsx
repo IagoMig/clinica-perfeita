@@ -312,36 +312,47 @@ export function ProcedurePage() {
       />
 
       <main className="bg-offwhite text-dark">
-        <section className="pt-32 pb-24 md:pt-44 md:pb-32 relative overflow-hidden">
-          <div className="container mx-auto px-6 md:px-12">
+        <section className="pt-32 pb-16 md:pt-44 md:pb-32 relative overflow-hidden">
+          <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
             <FadeIn>
               <div className="text-center max-w-3xl mx-auto">
+                <div className="mb-6 flex justify-center">
+                  <Link
+                    to="/#services"
+                    className="inline-flex items-center gap-2.5 rounded-full border border-gold/30 bg-white/85 backdrop-blur-md px-4 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-gold-dark shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:bg-white transition"
+                  >
+                    <span className="text-sm leading-none">←</span>
+                    Ver todos os tratamentos
+                  </Link>
+                </div>
+
                 <span className="uppercase tracking-[0.28em] text-xs text-gold-dark font-medium">
                   {procedure.eyebrow}
                 </span>
 
-                <h1 className="mt-6 text-5xl md:text-7xl font-serif leading-tight text-dark">
-                  {procedure.title.split(' em ')[0]} <br />
+                <h1 className="mt-5 text-3xl sm:text-5xl md:text-7xl font-serif leading-[1.06] text-dark break-words">
+                  {procedure.title.split(' em ')[0]}{' '}
+                  <br className="hidden sm:inline" />
                   <span className="italic text-sage-dark">em Curitiba</span>
                 </h1>
 
-                <p className="mt-8 text-muted text-lg md:text-xl font-light leading-relaxed">
+                <p className="mt-6 text-muted text-base md:text-xl font-light leading-relaxed">
                   {procedure.subtitle}
                 </p>
 
-                <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+                <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
                   <a
                     href="https://wa.me/554132060016"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-8 py-4 rounded-full bg-gold text-white uppercase tracking-[0.18em] text-xs hover:bg-gold-dark transition"
+                    className="px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gold text-white uppercase tracking-[0.18em] text-xs hover:bg-gold-dark transition text-center shadow-[0_12px_30px_rgba(201,169,110,0.25)]"
                   >
                     Agendar avaliação
                   </a>
 
                   <Link
                     to="/sobre"
-                    className="px-8 py-4 rounded-full border border-gold/40 text-gold-dark uppercase tracking-[0.18em] text-xs hover:bg-white transition"
+                    className="px-7 sm:px-8 py-3.5 sm:py-4 rounded-full border border-gold/40 text-gold-dark uppercase tracking-[0.18em] text-xs hover:bg-white transition text-center"
                   >
                     Conhecer a clínica
                   </Link>
@@ -352,7 +363,7 @@ export function ProcedurePage() {
         </section>
 
         <section className="pb-28 md:pb-40">
-          <div className="container mx-auto px-6 md:px-12">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12">
             <div className="max-w-5xl mx-auto bg-white/70 border border-gold/20 rounded-[2rem] p-5 md:p-8 shadow-sm">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <FadeIn direction="right">

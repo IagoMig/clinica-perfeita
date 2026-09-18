@@ -414,14 +414,6 @@ export function BlogPostPage() {
       />
 
       <main className="min-h-screen bg-[#fbf8f4] text-[#2f2822] overflow-hidden">
-        <Link
-          to="/blog"
-          className="fixed top-5 left-5 z-[80] inline-flex items-center gap-3 rounded-full border border-[#d5bb93]/45 bg-white/80 backdrop-blur-md px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-[#9f7743] shadow-[0_12px_30px_rgba(0,0,0,0.06)] hover:bg-white transition"
-        >
-          <span className="text-base leading-none">←</span>
-          Blog
-        </Link>
-
         <article>
           <header className="relative pt-32 pb-16 md:pt-44 md:pb-24">
             <div className="absolute inset-0 pointer-events-none">
@@ -430,21 +422,31 @@ export function BlogPostPage() {
               <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:32px_32px]" />
             </div>
 
-            <div className="container relative z-10 mx-auto px-6 md:px-12">
+            <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
               <div className="max-w-5xl mx-auto text-center">
+                <div className="mb-6 flex justify-center">
+                  <Link
+                    to="/blog"
+                    className="inline-flex items-center gap-2.5 rounded-full border border-[#d5bb93]/45 bg-white/85 backdrop-blur-md px-4 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#9f7743] shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:bg-white transition"
+                  >
+                    <span className="text-sm leading-none">←</span>
+                    Voltar ao Blog
+                  </Link>
+                </div>
+
                 <span className="inline-flex rounded-full border border-[#d5bb93]/45 bg-white/70 px-5 py-2 text-[10px] uppercase tracking-[0.28em] text-[#9f7743]">
                   {post.category}
                 </span>
 
-                <h1 className="mt-8 text-4xl md:text-6xl lg:text-7xl font-serif leading-[0.98] text-[#2f2822]">
+                <h1 className="mt-6 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif leading-[1.08] text-[#2f2822] break-words">
                   {post.title}
                 </h1>
 
-                <p className="mt-7 max-w-2xl mx-auto text-[#6d6258] font-light text-lg leading-relaxed">
+                <p className="mt-6 max-w-2xl mx-auto text-[#6d6258] font-light text-base md:text-lg leading-relaxed">
                   {post.description}
                 </p>
 
-                <div className="mt-7 flex items-center justify-center gap-3 text-[11px] uppercase tracking-[0.18em] text-[#b88f57]">
+                <div className="mt-6 flex items-center justify-center gap-3 text-[11px] uppercase tracking-[0.18em] text-[#b88f57]">
                   <span>{post.readTime}</span>
                   <span>•</span>
                   <span>

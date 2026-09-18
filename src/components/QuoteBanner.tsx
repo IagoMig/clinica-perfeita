@@ -105,9 +105,9 @@ export function QuoteBanner() {
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-[4.25rem] font-serif text-dark leading-[1.05] mb-5">
-                Conteúdo que traduz
-                <br />
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] font-serif text-dark leading-[1.08] mb-5">
+                Conteúdo que traduz{' '}
+                <br className="hidden sm:inline" />
                 <span className="italic text-sage-dark">
                   beleza, cuidado e presença.
                 </span>
@@ -180,30 +180,30 @@ export function QuoteBanner() {
 
                   {/* bio mobile */}
                   <div className="px-4 pt-4 pb-3 bg-white/70">
-                    <div className="grid grid-cols-3 gap-2 text-center mb-4">
-                      <div className="rounded-2xl bg-white/70 border border-black/5 py-3">
-                        <div className="text-dark font-semibold text-base leading-none">
+                    <div className="grid grid-cols-3 gap-1.5 sm:gap-2 text-center mb-4">
+                      <div className="rounded-2xl bg-white/70 border border-black/5 py-2.5 sm:py-3 px-1">
+                        <div className="text-dark font-semibold text-sm sm:text-base leading-none">
                           256
                         </div>
-                        <div className="text-[10px] uppercase tracking-[0.18em] text-dark/45 mt-1">
+                        <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-dark/45 mt-1 truncate">
                           Posts
                         </div>
                       </div>
 
-                      <div className="rounded-2xl bg-white/70 border border-black/5 py-3">
-                        <div className="text-dark font-semibold text-base leading-none">
+                      <div className="rounded-2xl bg-white/70 border border-black/5 py-2.5 sm:py-3 px-1">
+                        <div className="text-dark font-semibold text-sm sm:text-base leading-none">
                           3.679
                         </div>
-                        <div className="text-[10px] uppercase tracking-[0.18em] text-dark/45 mt-1">
+                        <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-dark/45 mt-1 truncate">
                           Seguidores
                         </div>
                       </div>
 
-                      <div className="rounded-2xl bg-white/70 border border-black/5 py-3">
-                        <div className="text-dark font-semibold text-base leading-none">
+                      <div className="rounded-2xl bg-white/70 border border-black/5 py-2.5 sm:py-3 px-1">
+                        <div className="text-dark font-semibold text-sm sm:text-base leading-none">
                           185
                         </div>
-                        <div className="text-[10px] uppercase tracking-[0.18em] text-dark/45 mt-1">
+                        <div className="text-[9px] sm:text-[10px] uppercase tracking-[0.14em] text-dark/45 mt-1 truncate">
                           Seguindo
                         </div>
                       </div>
@@ -215,7 +215,16 @@ export function QuoteBanner() {
                       </p>
                       <p className="mt-1">🌸 Realçando sua melhor versão</p>
                       <p>🤝 Atendimento personalizado e resultados que surpreendem</p>
-                      <p className="mt-1 text-dark/60">wa.me/554132060016</p>
+                      <p className="mt-1 text-dark/60">
+                        <a
+                          href="https://wa.me/554132060016"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-gold transition-colors"
+                        >
+                          wa.me/554132060016
+                        </a>
+                      </p>
                     </div>
                   </div>
 

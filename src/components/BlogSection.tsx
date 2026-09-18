@@ -7,7 +7,7 @@ export function BlogSection() {
   const posts = blogPosts.slice(0, 3); // mostra só 3 na home
 
   return (
-    <section className="relative py-24 md:py-32 bg-[#fbf8f4] overflow-hidden">
+    <section className="relative py-20 md:py-32 bg-[#fbf8f4] overflow-hidden">
       
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -15,24 +15,24 @@ export function BlogSection() {
         <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:32px_32px]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-12">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
 
         {/* Header */}
         <FadeIn>
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             
             <span className="uppercase tracking-[0.28em] text-xs text-[#b88f57] font-medium">
               Blog Clínica Perfeita
             </span>
 
-            <h2 className="mt-6 text-4xl md:text-6xl font-serif text-[#2f2822] leading-tight">
+            <h2 className="mt-5 text-3xl sm:text-5xl md:text-6xl font-serif text-[#2f2822] leading-[1.06]">
               Conteúdos sobre estética,
               <span className="block italic text-[#c79d62]">
                 pele e naturalidade.
               </span>
             </h2>
 
-            <p className="mt-6 text-[#6d6258] font-light text-lg leading-relaxed">
+            <p className="mt-6 text-[#6d6258] font-light text-base md:text-lg leading-relaxed">
               Informações pensadas para quem busca procedimentos estéticos em Curitiba com mais clareza, segurança e sofisticação.
             </p>
 

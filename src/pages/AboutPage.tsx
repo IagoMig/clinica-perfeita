@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { BotanicalMotif } from '../components/BotanicalMotif';
-import { Footer } from '../components/Footer';
 
 const fadeUp = {
   initial: { opacity: 0, y: 34 },
@@ -179,23 +179,7 @@ function MediaRenderer({
 export function AboutPage() {
   return (
     <main className="bg-[#fbf7f2] text-dark overflow-hidden">
-      <div className="fixed top-5 left-5 md:top-7 md:left-7 z-[60]">
-        <a
-          href="/"
-          className="group inline-flex items-center gap-3 rounded-full border border-[#d9c6a8]/35 bg-white/82 backdrop-blur-xl px-4 py-3 text-dark/80 shadow-[0_12px_30px_rgba(0,0,0,0.07)] transition-all duration-500 hover:-translate-y-[1px] hover:bg-white hover:shadow-[0_16px_40px_rgba(0,0,0,0.10)]"
-          aria-label="Voltar para a página inicial"
-        >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/25 bg-[#faf5ee] text-gold-dark transition-all duration-500 group-hover:bg-gold/10">
-            <ArrowLeft size={16} />
-          </span>
-
-          <span className="text-[11px] md:text-xs uppercase tracking-[0.22em] font-medium">
-            Voltar
-          </span>
-        </a>
-      </div>
-
-      <section className="relative pt-36 md:pt-44 lg:pt-48 pb-20 md:pb-24 overflow-hidden">
+      <section className="relative pt-32 sm:pt-36 md:pt-44 lg:pt-48 pb-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[780px] h-[340px] rounded-full bg-gold/8 blur-3xl" />
           <div className="absolute right-[-100px] bottom-[-80px] w-[340px] h-[260px] rounded-full bg-sage/8 blur-3xl" />
@@ -203,14 +187,27 @@ export function AboutPage() {
           <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(circle_at_center,#000_1px,transparent_1px)] [background-size:22px_22px]" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-6 md:px-12">
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
           <motion.div {...fadeUp} className="max-w-6xl mx-auto text-center">
             <div className="flex flex-col items-center">
-              <div className="mb-6">
-                <BotanicalMotif size={36} className="opacity-80" />
+              <div className="mb-5">
+                <Link
+                  to="/"
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-[#d9c6a8]/35 bg-white/85 backdrop-blur-xl px-4 py-2 text-dark/75 shadow-[0_8px_20px_rgba(0,0,0,0.04)] transition-all duration-300 hover:bg-white hover:text-dark"
+                  aria-label="Voltar para a página inicial"
+                >
+                  <ArrowLeft size={14} className="text-gold-dark" />
+                  <span className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium">
+                    Voltar ao Início
+                  </span>
+                </Link>
               </div>
 
-              <div className="flex items-center gap-4 mb-6">
+              <div className="mb-5">
+                <BotanicalMotif size={32} className="opacity-80" />
+              </div>
+
+              <div className="flex items-center gap-3 md:gap-4 mb-5">
                 <span className="text-gold text-xs tracking-[0.3em]">●●●</span>
                 <span className="uppercase tracking-[0.22em] text-xs md:text-sm text-sage-dark font-medium">
                   Sobre a Clínica
@@ -218,16 +215,16 @@ export function AboutPage() {
                 <span className="text-gold text-xs tracking-[0.3em]">●●●</span>
               </div>
 
-              <h1 className="text-5xl md:text-6xl lg:text-[6.2rem] font-serif leading-[0.94] text-dark max-w-5xl">
+              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[6rem] font-serif leading-[1.06] text-dark max-w-5xl">
                 Estética pensada
                 <span className="block italic text-gold-dark">
                   com delicadeza, técnica e presença.
                 </span>
               </h1>
 
-              <div className="w-24 h-[1px] bg-gold mt-8 mb-8" />
+              <div className="w-24 h-[1px] bg-gold mt-6 mb-6 md:mt-8 md:mb-8" />
 
-              <p className="max-w-3xl text-base md:text-xl text-dark/70 font-light leading-relaxed">
+              <p className="max-w-3xl text-base sm:text-lg md:text-xl text-dark/70 font-light leading-relaxed">
                 A Clínica Perfeita nasceu para oferecer uma experiência estética
                 mais refinada, onde acolhimento, naturalidade e sofisticação caminham
                 juntos em cada detalhe.
@@ -255,26 +252,26 @@ export function AboutPage() {
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,20,20,0.12)_0%,rgba(20,20,20,0.18)_30%,rgba(20,20,20,0.42)_100%)]" />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.32),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(184,155,114,0.18),transparent_24%)]" />
 
-                  <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-10 lg:p-12">
-                    <div className="flex items-center justify-between gap-6">
-                      <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/12 backdrop-blur-md px-4 py-2 shadow-[0_10px_25px_rgba(0,0,0,0.12)]">
+                  <div className="relative z-10 h-full flex flex-col justify-between p-5 sm:p-8 md:p-10 lg:p-12">
+                    <div className="flex items-center justify-between gap-4 sm:gap-6">
+                      <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/12 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 shadow-[0_10px_25px_rgba(0,0,0,0.12)]">
                         <div className="w-2 h-2 rounded-full bg-gold/80" />
-                        <span className="text-[10px] uppercase tracking-[0.24em] text-white/90">
+                        <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] text-white/90">
                           Clínica Perfeita
                         </span>
                       </div>
 
-                      <span className="text-[10px] uppercase tracking-[0.26em] text-white/65">
+                      <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.24em] sm:tracking-[0.26em] text-white/65">
                         Estética avançada
                       </span>
                     </div>
 
-                    <div className="max-w-2xl">
-                      <p className="text-[10px] uppercase tracking-[0.28em] text-white/70 mb-5">
+                    <div className="max-w-2xl my-6 sm:my-0">
+                      <p className="text-[10px] uppercase tracking-[0.28em] text-white/70 mb-3 sm:mb-5">
                         Um espaço onde o cuidado encontra a beleza
                       </p>
 
-                      <h2 className="text-3xl md:text-5xl lg:text-[4.4rem] font-serif text-white leading-[0.98] drop-shadow-[0_6px_20px_rgba(0,0,0,0.28)]">
+                      <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4.2rem] font-serif text-white leading-[1.04] drop-shadow-[0_6px_20px_rgba(0,0,0,0.28)]">
                         Sofisticação,
                         <span className="block italic text-[#e4cfb2]">
                           leveza e acolhimento.
@@ -282,30 +279,30 @@ export function AboutPage() {
                       </h2>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <div className="rounded-[1.4rem] border border-white/15 bg-white/10 backdrop-blur-md px-5 py-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
-                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/60 mb-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+                      <div className="rounded-[1.2rem] sm:rounded-[1.4rem] border border-white/15 bg-white/10 backdrop-blur-md px-4 py-4 sm:px-5 sm:py-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
+                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/60 mb-1.5 sm:mb-2">
                           Essência
                         </p>
-                        <p className="text-white text-lg font-serif leading-snug">
+                        <p className="text-white text-base sm:text-lg font-serif leading-snug">
                           Naturalidade
                         </p>
                       </div>
 
-                      <div className="rounded-[1.4rem] border border-white/15 bg-white/10 backdrop-blur-md px-5 py-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
-                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/60 mb-2">
+                      <div className="rounded-[1.2rem] sm:rounded-[1.4rem] border border-white/15 bg-white/10 backdrop-blur-md px-4 py-4 sm:px-5 sm:py-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
+                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/60 mb-1.5 sm:mb-2">
                           Experiência
                         </p>
-                        <p className="text-white text-lg font-serif leading-snug">
+                        <p className="text-white text-base sm:text-lg font-serif leading-snug">
                           Acolhimento
                         </p>
                       </div>
 
-                      <div className="rounded-[1.4rem] border border-white/15 bg-white/10 backdrop-blur-md px-5 py-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
-                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/60 mb-2">
+                      <div className="rounded-[1.2rem] sm:rounded-[1.4rem] border border-white/15 bg-white/10 backdrop-blur-md px-4 py-4 sm:px-5 sm:py-5 shadow-[0_12px_30px_rgba(0,0,0,0.12)]">
+                        <p className="text-[10px] uppercase tracking-[0.24em] text-white/60 mb-1.5 sm:mb-2">
                           Resultado
                         </p>
-                        <p className="text-white text-lg font-serif leading-snug">
+                        <p className="text-white text-base sm:text-lg font-serif leading-snug">
                           Harmonia
                         </p>
                       </div>
@@ -317,12 +314,12 @@ export function AboutPage() {
 
             <motion.div {...fadeUp} className="xl:col-span-5">
               <div className="h-full flex flex-col gap-6">
-                <div className="rounded-[2rem] border border-[#d9c6a8]/25 bg-[rgba(255,252,248,0.82)] backdrop-blur-xl p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+                <div className="rounded-[2rem] border border-[#d9c6a8]/25 bg-[rgba(255,252,248,0.82)] backdrop-blur-xl p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
                   <span className="uppercase tracking-[0.22em] text-xs md:text-sm text-gold-dark font-medium mb-5 block">
                     Nossa proposta
                   </span>
 
-                  <h3 className="text-3xl md:text-4xl lg:text-[3rem] font-serif text-dark leading-[1.02] mb-6">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] font-serif text-dark leading-[1.08] mb-6">
                     Cuidar da beleza é também
                     <span className="block italic text-sage-dark">
                       cuidar da confiança.
@@ -622,8 +619,6 @@ export function AboutPage() {
           </motion.div>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

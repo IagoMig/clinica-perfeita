@@ -283,7 +283,7 @@ function ServiceLuxuryCard({
                     </div>
 
                     <div className="max-w-[440px]">
-                      <h3 className="text-[1.95rem] sm:text-[2.15rem] md:text-[3rem] lg:text-[3.55rem] font-serif text-[#2c241f] leading-[0.96] mb-5 md:mb-6">
+                      <h3 className="text-[1.8rem] sm:text-[2.15rem] md:text-[2.8rem] lg:text-[3.5rem] font-serif text-[#2c241f] leading-[1.06] mb-5 md:mb-6 break-words">
                         {hasPage ? (
                           <Link
                             to={procedureLink}
@@ -306,7 +306,7 @@ function ServiceLuxuryCard({
                         {hasPage ? (
                           <Link
                             to={procedureLink}
-                            className="inline-flex items-center justify-center gap-3 rounded-full bg-[#d3a05d] text-white px-6 md:px-8 py-3.5 text-[11px] md:text-xs uppercase tracking-[0.24em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500"
+                            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#d3a05d] text-white px-5 sm:px-6 md:px-8 py-3.5 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500 text-center"
                           >
                             Ver procedimento
                             <span className="text-base leading-none">→</span>
@@ -314,7 +314,7 @@ function ServiceLuxuryCard({
                         ) : (
                           <a
                             href="#contact"
-                            className="inline-flex items-center justify-center gap-3 rounded-full bg-[#d3a05d] text-white px-6 md:px-8 py-3.5 text-[11px] md:text-xs uppercase tracking-[0.24em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500"
+                            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#d3a05d] text-white px-5 sm:px-6 md:px-8 py-3.5 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] shadow-[0_16px_35px_rgba(211,160,93,0.28)] hover:translate-y-[-1px] hover:shadow-[0_20px_40px_rgba(211,160,93,0.35)] transition-all duration-500 text-center"
                           >
                             Agendar avaliação
                             <span className="text-base leading-none">→</span>
@@ -323,7 +323,7 @@ function ServiceLuxuryCard({
 
                         <button
                           onClick={() => setIsFullscreenOpen(true)}
-                          className="inline-flex items-center justify-center gap-3 rounded-full border border-[#d5bb93]/45 bg-white/82 text-[#9f7743] px-6 md:px-8 py-3.5 text-[11px] md:text-xs uppercase tracking-[0.22em] shadow-[0_10px_24px_rgba(0,0,0,0.03)] hover:bg-white transition-all duration-500"
+                          className="inline-flex items-center justify-center gap-2.5 rounded-full border border-[#d5bb93]/45 bg-white/82 text-[#9f7743] px-5 sm:px-6 md:px-8 py-3.5 text-[10px] sm:text-[11px] md:text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] shadow-[0_10px_24px_rgba(0,0,0,0.03)] hover:bg-white transition-all duration-500 text-center"
                         >
                           Ver imagem
                           <span className="text-sm leading-none">⤢</span>
@@ -526,7 +526,7 @@ function Infinite3DServicesCarousel() {
           <span className="text-[#c79d62] text-xs tracking-[0.3em]">●●●</span>
         </div>
 
-        <h3 className="text-3xl md:text-5xl lg:text-[4rem] font-serif text-[#2f2822] leading-[0.98]">
+        <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-[4rem] font-serif text-[#2f2822] leading-[1.05]">
           Um portfólio completo de
           <span className="block italic text-[#c79d62]">estética premium.</span>
         </h3>
@@ -614,7 +614,7 @@ export function Services() {
             <span className="text-[#c79d62] text-xs tracking-[0.3em]">●●●</span>
           </div>
 
-          <h2 className="text-4xl md:text-6xl lg:text-[4.6rem] font-serif text-[#2f2822] mb-6 leading-[0.96]">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] font-serif text-[#2f2822] mb-6 leading-[1.04]">
             Tratamentos de
             <span className="block italic text-[#c79d62]">
               excelência estética.

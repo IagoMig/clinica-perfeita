@@ -106,7 +106,7 @@ export function Gallery() {
   return (
     <section
       id="gallery"
-      className="relative py-32 md:py-40 bg-[#fbf7f2] overflow-hidden"
+      className="relative py-20 md:py-32 lg:py-40 bg-[#fbf7f2] overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-120px] left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-gold/8 blur-3xl" />
@@ -118,13 +118,13 @@ export function Gallery() {
         <BotanicalMotif size={420} color="#B89B72" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-12">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 34 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl mx-auto text-center mb-16 md:mb-20"
+          className="max-w-3xl mx-auto text-center mb-12 md:mb-20"
         >
           <div className="flex flex-col items-center">
             <div className="mb-6 flex items-center gap-4">
@@ -135,7 +135,7 @@ export function Gallery() {
               <span className="text-gold text-xs tracking-[0.3em]">●●●</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[4.2rem] font-serif text-dark leading-[1.02]">
+            <h2 className="text-3xl sm:text-5xl lg:text-[4.2rem] font-serif text-dark leading-[1.06]">
               Um ambiente de
               <span className="block italic text-gold-dark">
                 calma e elegância.

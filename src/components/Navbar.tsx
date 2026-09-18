@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll } from 'framer-motion';
 
 export function Navbar() {
@@ -14,9 +15,9 @@ export function Navbar() {
 
   const navLinks = [
     { label: 'Sobre', href: '/sobre' },
-    { label: 'Tratamentos', href: '#services' },
-    { label: 'Galeria', href: '#gallery' },
-    { label: 'Contato', href: '#contact' },
+    { label: 'Tratamentos', href: '/#services' },
+    { label: 'Galeria', href: '/#gallery' },
+    { label: 'Contato', href: '/#contact' },
   ];
 
   return (
@@ -36,28 +37,29 @@ export function Navbar() {
       }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="container mx-auto px-6 md:px-12">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12">
         <div
           className={`flex items-center justify-between transition-all duration-500 ${
-            isScrolled ? 'h-[78px]' : 'h-[92px]'
+            isScrolled ? 'h-[72px] sm:h-[78px]' : 'h-[84px] sm:h-[92px]'
           }`}
         >
           {/* Brand */}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="group flex flex-col items-start justify-center leading-none"
+            aria-label="Clínica Perfeita Início"
           >
-            <span className="text-[1.35rem] md:text-[1.55rem] font-serif text-dark tracking-[0.08em]">
+            <span className="text-[1.2rem] sm:text-[1.35rem] md:text-[1.55rem] font-serif text-dark tracking-[0.06em] sm:tracking-[0.08em] whitespace-nowrap">
               Clínica Perfeita
             </span>
 
-            <div className="mt-2 flex items-center gap-3">
-              <div className="w-8 h-[1px] bg-gold/70 transition-all duration-500 group-hover:w-12" />
-              <span className="text-[10px] uppercase tracking-[0.28em] text-dark/45">
+            <div className="mt-1.5 sm:mt-2 flex items-center gap-2.5 sm:gap-3">
+              <div className="w-6 sm:w-8 h-[1px] bg-gold/70 transition-all duration-500 group-hover:w-12" />
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-[0.22em] sm:tracking-[0.28em] text-dark/45 whitespace-nowrap">
                 Estética avançada
               </span>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8 lg:gap-10">
@@ -74,7 +76,9 @@ export function Navbar() {
             </div>
 
             <a
-              href="https://wa.me/5541999999999"
+              href="https://wa.me/554132060016"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-2.5 rounded-full border border-gold/70 text-gold text-sm tracking-[0.12em] hover:bg-gold hover:text-dark transition-all duration-500 shadow-[0_8px_24px_rgba(0,0,0,0.04)]"
             >
               Agendar
@@ -84,8 +88,8 @@ export function Navbar() {
           {/* Mobile button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden relative flex items-center justify-center w-11 h-11 rounded-full border border-gold/20 bg-white/60 backdrop-blur-md"
-            aria-label="Menu"
+            className="md:hidden relative flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-gold/20 bg-white/70 backdrop-blur-md"
+            aria-label="Abrir menu"
           >
             <div className="relative w-5 h-5">
               <span
@@ -116,9 +120,9 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -14 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden px-6 pb-6"
+            className="md:hidden px-4 sm:px-6 pb-6"
           >
-            <div className="rounded-[1.75rem] border border-[#d9c6a8]/30 bg-[rgba(250,249,246,0.92)] backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.06)] overflow-hidden">
+            <div className="rounded-[1.75rem] border border-[#d9c6a8]/30 bg-[rgba(250,249,246,0.95)] backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.08)] overflow-hidden">
               <div className="px-6 pt-6 pb-3">
                 <span className="text-[10px] uppercase tracking-[0.28em] text-dark/45">
                   Navegação
@@ -134,14 +138,16 @@ export function Navbar() {
                     initial={{ opacity: 0, x: -14 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.28, delay: index * 0.05 }}
-                    className="py-4 border-b border-dark/6 text-dark/75 hover:text-dark transition-colors duration-300 text-[1rem] font-light"
+                    className="py-3.5 border-b border-dark/6 text-dark/75 hover:text-dark transition-colors duration-300 text-[1rem] font-light"
                   >
                     {link.label}
                   </motion.a>
                 ))}
 
                 <motion.a
-                  href="https://wa.me/5541999999999"
+                  href="https://wa.me/554132060016"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setIsMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}

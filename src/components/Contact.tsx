@@ -20,7 +20,7 @@ export function Contact() {
         <BotanicalMotif size={760} color="#B89B72" />
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 38 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,15 +33,15 @@ export function Contact() {
             <div className="absolute top-0 left-0 w-full h-28 bg-gradient-to-b from-white/80 to-transparent pointer-events-none" />
 
             {/* moldura interna */}
-            <div className="absolute inset-[14px] md:inset-[18px] rounded-[1.5rem] md:rounded-[2rem] border border-gold/15 pointer-events-none" />
+            <div className="absolute inset-[10px] sm:inset-[14px] md:inset-[18px] rounded-[1.5rem] md:rounded-[2rem] border border-gold/15 pointer-events-none" />
 
             {/* cantos */}
-            <div className="absolute top-6 left-6 w-10 h-10 border-t border-l border-gold/35" />
-            <div className="absolute top-6 right-6 w-10 h-10 border-t border-r border-gold/35" />
-            <div className="absolute bottom-6 left-6 w-10 h-10 border-b border-l border-gold/35" />
-            <div className="absolute bottom-6 right-6 w-10 h-10 border-b border-r border-gold/35" />
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 w-8 h-8 sm:w-10 sm:h-10 border-t border-l border-gold/35" />
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 border-t border-r border-gold/35" />
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 w-8 h-8 sm:w-10 sm:h-10 border-b border-l border-gold/35" />
+            <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 w-8 h-8 sm:w-10 sm:h-10 border-b border-r border-gold/35" />
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 px-8 py-12 md:px-14 md:py-16 lg:px-16 lg:py-20">
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 px-5 py-8 sm:px-8 sm:py-12 md:px-14 md:py-16 lg:px-16 lg:py-20">
               {/* Coluna esquerda */}
               <motion.div
                 initial={{ opacity: 0, x: -26 }}
@@ -58,7 +58,7 @@ export function Contact() {
                     </span>
                   </div>
 
-                  <h2 className="text-4xl md:text-5xl lg:text-[4.4rem] font-serif text-dark leading-[0.98] mb-6">
+                  <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[4.4rem] font-serif text-dark leading-[1.04] mb-6">
                     Sua jornada
                     <span className="block italic text-sage-dark">começa aqui.</span>
                   </h2>

@@ -13,36 +13,38 @@ export function BlogPage() {
         canonical="https://www.clinicaperfeita.com.br/blog"
         keywords="blog estética Curitiba, laser CO2 Curitiba, botox Curitiba, harmonização facial Curitiba"
       />
-              <Link
-          to="/"
-          className="fixed top-5 left-5 z-[80] inline-flex items-center gap-3 rounded-full border border-[#d5bb93]/45 bg-white/80 backdrop-blur-md px-5 py-3 text-[11px] uppercase tracking-[0.18em] text-[#9f7743] shadow-[0_12px_30px_rgba(0,0,0,0.06)] hover:bg-white transition"
-        >
-          <span className="text-base leading-none">←</span>
-          Home
-        </Link>
-
       <main className="min-h-screen bg-[#fbf8f4] text-[#2f2822]">
-        <section className="relative pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden">
+        <section className="relative pt-32 pb-16 md:pt-44 md:pb-28 overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute top-[-10rem] left-1/2 -translate-x-1/2 w-[52rem] h-[26rem] rounded-full bg-[#d9b98d]/20 blur-3xl" />
             <div className="absolute inset-0 opacity-[0.035] bg-[linear-gradient(to_right,rgba(0,0,0,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:32px_32px]" />
           </div>
 
-          <div className="container relative z-10 mx-auto px-6 md:px-12">
+          <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
             <FadeIn>
               <div className="max-w-4xl mx-auto text-center">
+                <div className="mb-6 flex justify-center">
+                  <Link
+                    to="/"
+                    className="inline-flex items-center gap-2.5 rounded-full border border-[#d5bb93]/45 bg-white/85 backdrop-blur-md px-4 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] text-[#9f7743] shadow-[0_8px_20px_rgba(0,0,0,0.04)] hover:bg-white transition"
+                  >
+                    <span className="text-sm leading-none">←</span>
+                    Voltar ao Início
+                  </Link>
+                </div>
+
                 <span className="uppercase tracking-[0.28em] text-xs text-[#b88f57] font-medium">
                   Blog Clínica Perfeita
                 </span>
 
-                <h1 className="mt-6 text-5xl md:text-7xl font-serif leading-tight text-[#2f2822]">
+                <h1 className="mt-5 text-3xl sm:text-5xl md:text-7xl font-serif leading-[1.06] text-[#2f2822]">
                   Conteúdos sobre estética,
                   <span className="block italic text-[#c79d62]">
                     pele e naturalidade.
                   </span>
                 </h1>
 
-                <p className="mt-8 text-[#6d6258] text-lg md:text-xl font-light leading-relaxed">
+                <p className="mt-6 text-[#6d6258] text-base md:text-xl font-light leading-relaxed">
                   Informações para quem busca tratamentos estéticos em Curitiba
                   com mais segurança, clareza e sofisticação.
                 </p>
@@ -52,7 +54,7 @@ export function BlogPage() {
         </section>
 
         <section className="pb-28 md:pb-40">
-          <div className="container mx-auto px-6 md:px-12">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7 max-w-7xl mx-auto">
               {blogPosts.map((post, index) => (
                 <FadeIn key={post.slug} delay={index * 0.06}>

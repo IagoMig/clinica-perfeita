@@ -180,7 +180,7 @@ export function Reviews() {
   return (
     <section
       id="reviews"
-      className="relative py-32 md:py-40 bg-[#f8f3ed] overflow-hidden"
+      className="relative py-20 md:py-32 lg:py-40 bg-[#f8f3ed] overflow-hidden"
     >
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[720px] h-[280px] rounded-full bg-gold/8 blur-3xl" />
@@ -188,13 +188,13 @@ export function Reviews() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.35),transparent_30%,rgba(0,0,0,0.015)_100%)]" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-12">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 34 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-3xl mx-auto text-center mb-16 md:mb-20"
+          className="max-w-3xl mx-auto text-center mb-12 md:mb-20"
         >
           <div className="flex flex-col items-center">
             <BotanicalMotif size={28} className="mb-6 opacity-80" />
@@ -207,7 +207,7 @@ export function Reviews() {
               <span className="text-gold text-xs tracking-[0.3em]">●●●</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl lg:text-[4.1rem] font-serif text-dark leading-[1.02]">
+            <h2 className="text-3xl sm:text-5xl lg:text-[4.1rem] font-serif text-dark leading-[1.06]">
               A confiança de quem
               <span className="block italic text-gold-dark">já viveu a experiência.</span>
             </h2>
@@ -262,39 +262,39 @@ export function Reviews() {
                   ”
                 </div>
 
-                <div className="relative p-6 md:p-7 flex flex-col min-h-[280px] md:min-h-[310px]">
-                  <div className="flex items-start justify-between gap-4 mb-5">
-                    <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-full border border-gold/20 bg-white/70 flex items-center justify-center shrink-0 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
+                <div className="relative p-5 sm:p-6 md:p-7 flex flex-col min-h-[260px] md:min-h-[310px]">
+                  <div className="flex items-start justify-between gap-3 sm:gap-4 mb-5">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-gold/20 bg-white/70 flex items-center justify-center shrink-0 shadow-[0_8px_20px_rgba(0,0,0,0.04)]">
                         <span className="text-sm font-serif text-gold-dark">
                           {review.name.charAt(0).toUpperCase()}
                         </span>
                       </div>
 
                       <div>
-                        <h3 className="text-lg font-serif text-dark leading-tight">
+                        <h3 className="text-base sm:text-lg font-serif text-dark leading-tight break-words">
                           {review.name}
                         </h3>
-                        <p className="text-[11px] uppercase tracking-[0.22em] text-dark/40 mt-2">
+                        <p className="text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-dark/40 mt-1.5 sm:mt-2">
                           Google Reviews
                         </p>
                       </div>
                     </div>
 
-                    <span className="text-xs text-dark/45 whitespace-nowrap">
+                    <span className="text-xs text-dark/45 whitespace-nowrap shrink-0">
                       {review.time}
                     </span>
                   </div>
 
-                  <div className="mb-5 flex items-center justify-between gap-4">
+                  <div className="mb-4 sm:mb-5 flex items-center justify-between gap-4">
                     <StarRow />
                     <div className="w-10 h-[1px] bg-gold/25" />
                   </div>
 
                   <p
                     className={[
-                      'text-dark/72 font-light leading-relaxed flex-1',
-                      featured ? 'text-base md:text-[1.05rem]' : 'text-[15px] md:text-base',
+                      'text-dark/72 font-light leading-relaxed flex-1 break-words',
+                      featured ? 'text-sm sm:text-base md:text-[1.05rem]' : 'text-[14px] sm:text-[15px] md:text-base',
                     ].join(' ')}
                   >
                     “{review.text}”

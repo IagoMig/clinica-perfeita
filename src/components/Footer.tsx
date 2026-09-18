@@ -22,11 +22,11 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="container relative z-10 mx-auto px-6 md:px-12 pt-20 md:pt-24 pb-8">
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 md:px-12 pt-20 md:pt-24 pb-8">
         {/* topo */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 pb-12 md:pb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-10 pb-12 md:pb-14">
           {/* marca */}
-          <div className="lg:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start">
+          <div className="md:col-span-2 lg:col-span-5 text-center lg:text-left flex flex-col items-center lg:items-start">
             <img
               src="/logo.png"
               alt="Clínica Perfeita"
@@ -52,7 +52,7 @@ export function Footer() {
           </div>
 
           {/* navegação */}
-          <div className="lg:col-span-3 text-center lg:text-left flex flex-col items-center lg:items-start">
+          <div className="lg:col-span-3 text-center md:text-left flex flex-col items-center md:items-start">
             <span className="text-[10px] uppercase tracking-[0.32em] text-gold-dark mb-5">
               Navegação
             </span>
@@ -85,6 +85,13 @@ export function Footer() {
               >
                 Avaliações
               </a>
+
+              <Link
+                to="/blog"
+                className="text-sm text-dark/60 hover:text-gold-dark transition-colors"
+              >
+                Blog
+              </Link>
 
               <a
                 href="/#contact"
