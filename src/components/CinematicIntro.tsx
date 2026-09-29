@@ -78,7 +78,7 @@ export function CinematicIntro() {
 
   const heroOpacity = useTransform(
     scrollYProgress,
-    [0, 0.18, 0.38, 0.52],
+    [0, 0.28, 0.52, 0.78],
     [1, 1, 0.55, 0]
   );
 
@@ -112,22 +112,10 @@ export function CinematicIntro() {
     [1, 0.94, 0.56]
   );
 
-  const aboutOpacity = useTransform(
-    scrollYProgress,
-    [0.34, 0.52, 0.74],
-    [0, 0.82, 1]
-  );
-
   const aboutY = useTransform(
     scrollYProgress,
-    [0.34, 0.74],
-    [90, 0]
-  );
-
-  const aboutScale = useTransform(
-    scrollYProgress,
-    [0.34, 0.74],
-    [0.975, 1]
+    [0.28, 0.78],
+    ['100vh', '0vh']
   );
 
   const aboutBlur = useTransform(
@@ -170,7 +158,7 @@ export function CinematicIntro() {
     <>
       <section
         ref={sectionRef}
-        className="relative hidden md:block h-[210vh] bg-[#f8f5f1]"
+        className="relative hidden md:block h-[240vh] bg-[#f8f5f1]"
       >
         <div className="sticky top-0 h-screen overflow-hidden">
           <div className="absolute inset-0 bg-[#f8f5f1]" />
@@ -291,12 +279,10 @@ export function CinematicIntro() {
 
           <motion.div
             style={{
-              opacity: aboutOpacity,
               y: aboutY,
-              scale: aboutScale,
               filter: useTransform(aboutBlur, (v) => `blur(${v}px)`),
             }}
-            className="absolute inset-0 z-30 flex items-center"
+            className="absolute inset-0 z-30 flex items-center bg-[#f8f5f1]"
           >
             <div className="container mx-auto px-8 lg:px-12 py-20">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center max-w-6xl mx-auto">
